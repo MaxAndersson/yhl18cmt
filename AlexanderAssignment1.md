@@ -21,14 +21,16 @@ Assignment 1
 #### Idempotency
 To make our code always have the same result, regardless of how many repetitions.
 
-It should be the same 
+It should be the same from one or multiple requests.
 
 #### Mutable vs Immutable Infrastructure
 
 #### Configuration Management vs. Orchestration
 
 #### Procedural vs Declarative
+Procedural, is when we define a step by step process on how to achieve our desired end state.
 
+Declarative, we define the end state we want to reach and let the software be responsible for figuring out how to reach the desired end state.
 #### Git Submodule
 
 #### Ansible
