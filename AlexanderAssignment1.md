@@ -9,7 +9,7 @@ Assignment 1
 *Platform as a Service*
 
 *Software as a Service*
-
+With SaaS you get a finished product served to you by having a third party hosting and making the applications available to customers over the internet. It is the furthest reaching main category within cloud computing in that it encompasses the mosts with IaaS encompassing the least, not necessairly in the useage part but in the simplicity for the customer to get started by taking away the worry of having to do anything but use the actual software.
 #### OS-level virtualization
 
 #### cgroups
