@@ -32,7 +32,9 @@ Procedural, is when we define a step by step process on how to achieve our desir
 
 Declarative, we define the end state we want to reach and let the software be responsible for figuring out how to reach the desired end state.
 #### Git Submodule
+A git submodule allows for a git repo to be part of another git repository as directory in the working directory of the parent repository. 
 
+You use a .gitmodules file in the root of the main repository to specify paths and URL for interacting with the submodule. A submodule can be interacted with independantly from the main repository with commit, push and pull.
 #### Ansible
 
 ##### *Inventory File*
