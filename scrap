@@ -1,0 +1,3 @@
+cgroups are a kernel feature for handling procesess and system resources.  
+It is a kernel feature for managing, auditing and restricting processes.
+It is a kernel feature, that allows for limits and isolation on CPU, memory, disk, I/O, network usage.
