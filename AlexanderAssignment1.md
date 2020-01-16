@@ -20,36 +20,40 @@ But for PaaS you would see the service include more of the cloud infrastructure 
 With SaaS you get a finished product served to you by having a third party hosting and making the applications available to customers over the internet. It is the furthest reaching main category within cloud computing in that it encompasses the mosts with IaaS encompassing the least, not necessairly in the useage part but in the simplicity for the customer to get started by taking away the worry of having to do anything but use the actual software.
 
 #### OS-level virtualization
-
+to do
 #### cgroups
-
+to do
 #### Copy-on-Write (COW) & Snapshots
 COW is a feature for filesystems in which we don't modify immedietly overwrite the original data, but rather we make a copy referrencing the master and from there we modify the copied data, and then once successful we write it to the master copy of the data.
 
+Snapshots
 
+to do
 #### High-Availability
-
+to do   
 #### Idempotency
 To make our code always have the same result, regardless of how many repetitions.
 
 It should be the same from one or multiple requests.
 
+Maybe add a bit more?
 #### Mutable vs Immutable Infrastructure
 Mutable infrastructure is when we can and will be updating the infrastructure in place and it's expected to be changed as well.There are some benefits to be had in a mutable environment e.g., adaptability on a per server basis, more adaptability for the specific applications. A drawback is that you are gonna have to deal with 'configuration drift' to some extent in a mutable environment due to the mutability. Another issue is that it can be harder to reproduce issues due to more unique configurations and it might just happen on that one server but not on the other one even though they are mostly the same.
 
-On the other hand when we use immutable infrastructure we get the opposite we get infrastrucutre where we end up creating an entirely new instance with that proper modifications made to it. 
+On the other hand when we use immutable infrastructure we get the opposite we get infrastrucutre where we end up creating an entirely new instance with the proper modifications made to it. A benefit you gain with the declarative approach is that you can easily, 
 #### Configuration Management vs. Orchestration
-
+to do
 #### Procedural vs Declarative
 Procedural, is when we define a step by step process on how to achieve our desired end state.
 
 Declarative, we define the end state we want to reach and let the software be responsible for figuring out how to reach the desired end state.
+
 #### Git Submodule
+
 A git submodule allows for a git repo to be part of another git repository as directory in the working directory of the parent repository. 
 
 You use a .gitmodules file in the root of the main repository to specify paths and URL for interacting with the submodule. A submodule can be interacted with independantly from the main repository with commit, push and pull.
 #### Ansible
-
 ##### *Inventory File*
 
 Contains a list of hosts. In the inventory file you can for  example add specific host variables or define groups of hosts, so that you for example only apply certain roles to one group or even one particular host. If a host is part of multiple groups they will get all applicable roles applied to them.
@@ -57,7 +61,6 @@ Contains a list of hosts. In the inventory file you can for  example add specifi
 A playbook is where we define what ansible will be doing. In essence it's like a to do list or an instruction manual. It is read sequentially and will proceed in that order through everything you have configured here. 
 
 #### Kubernetes
-
 ##### *Compare Stateful and Stateless Applications*
 
 A stateless applicaiton is one where one of your sessions have no impact on the next one, you could just say that your application 'resets' between sessions in that it forgets you. 
@@ -65,3 +68,4 @@ A stateless applicaiton is one where one of your sessions have no impact on the 
 Meanwhile a stateful application will have a memory of you being there stored away in persistent storage, so that when you come back the next time you will get recognized. In the instance that you comeback and you can see the history of what you did in your last session, then you can assume that the application has some form of state. What it stores is usually determined by the need of the application. 
 
 ##### *ReplicaSets,Deployments, Pods & Services*
+todo
