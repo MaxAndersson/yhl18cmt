@@ -22,50 +22,85 @@ With SaaS you get a finished product served to you by having a third party hosti
 #### OS-level virtualization
 to do
 #### cgroups
-to do
+
+cgroups are a feature of the Linux kernel, for organizing processes along with their child processes and controlling access and limiting system resources to the processes. Including CPU, memory, network among others, it does however not isolate what a processes can see which is done by namespaces. It is also largely consistent of two parts, controller and the core, where the core organizes processes and the controller responsible for system resources to be distributed to the processes.
+
 #### Copy-on-Write (COW) & Snapshots
 COW is a feature for filesystems in which we don't modify immedietly overwrite the original data, but rather we make a copy referrencing the master and from there we modify the copied data, and then once successful we write it to the master copy of the data.
 
-Snapshots
+Snapshots are made up by a set of references for data at a specific point in time. It can be used to have a state of restoring your system to if you want to test multiple different applications without having to clean up between them and such.
 
-to do
 #### High-Availability
-to do   
+A highly available system is a system which you measure the uptime and design it around having a high uptime and eliminating single points of failure. You need to keep failovers, backups, access among other things in how it affects the system. With Kubernetes you'd need at least 3 nodes for a high-availability system to some degree.
+
 #### Idempotency
 To make our code always have the same result, regardless of how many repetitions.
 
 It should be the same from one or multiple requests.
 
-Maybe add a bit more?
+A very simple example would be the following
+
+```
+
+X = 10
+
+Y += 1
+```
+The first example here is always going to have the value of 10.  While the second example will have an incremental value and thus it will not stay the same between the first and second request.
+
 #### Mutable vs Immutable Infrastructure
 Mutable infrastructure is when we can and will be updating the infrastructure in place and it's expected to be changed as well.There are some benefits to be had in a mutable environment e.g., adaptability on a per server basis, more adaptability for the specific applications. A drawback is that you are gonna have to deal with 'configuration drift' to some extent in a mutable environment due to the mutability. Another issue is that it can be harder to reproduce issues due to more unique configurations and it might just happen on that one server but not on the other one even though they are mostly the same.
 
-On the other hand when we use immutable infrastructure we get the opposite we get infrastrucutre where we end up creating an entirely new instance with the proper modifications made to it. A benefit you gain with the declarative approach is that you can easily, 
+On the other hand when we use immutable infrastructure we get the opposite we get infrastrucutre where we end up creating an entirely new instance with the proper modifications made to it. A benefit you gain with the declarative approach is that you will avoid 'configuration drift' because of it's immutable nature. It also fits nicely in with version control and thus you can easily switch between versions if you need to roll back and such. While those are some of the benefits, some of the drawbacks include e.g., your inability to modify things in place, if you need to do an update you would need to upgrade all the servers using the same configuration.
+
 #### Configuration Management vs. Orchestration
-to do
+
+Configuration Management
+
+todo
+
+Orchestration
+
+todo
 #### Procedural vs Declarative
+
 Procedural, is when we define a step by step process on how to achieve our desired end state.
 
-Declarative, we define the end state we want to reach and let the software be responsible for figuring out how to reach the desired end state.
+Declarative, we define the end state we want to reach and let the software be responsible for figuring out how to reach the desired end state. 
 
 #### Git Submodule
 
 A git submodule allows for a git repo to be part of another git repository as directory in the working directory of the parent repository. 
 
 You use a .gitmodules file in the root of the main repository to specify paths and URL for interacting with the submodule. A submodule can be interacted with independantly from the main repository with commit, push and pull.
+
 #### Ansible
 ##### *Inventory File*
 
 Contains a list of hosts. In the inventory file you can for  example add specific host variables or define groups of hosts, so that you for example only apply certain roles to one group or even one particular host. If a host is part of multiple groups they will get all applicable roles applied to them.
+
 ##### *Playbook*
+
 A playbook is where we define what ansible will be doing. In essence it's like a to do list or an instruction manual. It is read sequentially and will proceed in that order through everything you have configured here. 
 
 #### Kubernetes
 ##### *Compare Stateful and Stateless Applications*
 
-A stateless applicaiton is one where one of your sessions have no impact on the next one, you could just say that your application 'resets' between sessions in that it forgets you. 
+A stateless application is where one of your sessions have no impact on your next one, you could just say that your application 'resets' or 'forgets' you between sessions. 
 
 Meanwhile a stateful application will have a memory of you being there stored away in persistent storage, so that when you come back the next time you will get recognized. In the instance that you comeback and you can see the history of what you did in your last session, then you can assume that the application has some form of state. What it stores is usually determined by the need of the application. 
 
 ##### *ReplicaSets,Deployments, Pods & Services*
-todo
+###### *ReplicaSets*
+
+It is a controller where you can define how many replicas of a pod should be running at a given time. It always wants to achieve the desired state and make sure that the observable state is inline with the desired state of pod replicas. It manages the pods through labels, and manages all pods matching the applicable labels. Don't use overlapping labels as that can cause issues making different selectors think they did things they didn't actually do.
+
+###### *Deployments*
+
+A deployment is a concept not vastly different from ReplicaSets, in that it does a similar job to it, but it is a level higher up and is declarative. It uses a Pod template and through this we specify what a pod should contain, labels, volumes among other things.  So when you modify the Pod template of your deployment you will get new Pods created to match the new desired state.
+
+###### *Pods & Services*
+
+A Pod is in essence a group of containers with common resources, e.g., storage, network and a definitionon how to run the containers. It is also the smallest unit that you can manage and create in Kubernetes. A Pod could also be seen as a tightly bound group of applications that in the past would have been executed in the same machine. It is in essence one logical unit where the individual containers in the Pod can communicate using standard inter-process communication and even share one port space and the same IP address. 
+
+Services are essentially a way for defining how to access a set of Pods. Essentially it is a way to allow us to allow an application to not need to keep track of what Pod it should be talking to just that it has a Pod to talk to, this is why we use services to allow for this decoupling, at least this is how you could define it when we are dealing with something stateless. As the application would be fine with talking to any Pod just that it can talk to a Pod.
