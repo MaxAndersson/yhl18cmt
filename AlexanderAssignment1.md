@@ -20,7 +20,9 @@ But for PaaS you would see the service include more of the cloud infrastructure 
 With SaaS you get a finished product served to you by having a third party hosting and making the applications available to customers over the internet. It is the furthest reaching main category within cloud computing in that it encompasses the mosts with IaaS encompassing the least, not necessairly in the useage part but in the simplicity for the customer to get started by taking away the worry of having to do anything but use the actual software.
 
 #### OS-level virtualization
-to do
+
+
+
 #### cgroups
 
 cgroups are a feature of the Linux kernel, for organizing processes along with their child processes and controlling access and limiting system resources to the processes. Including CPU, memory, network among others, it does however not isolate what a processes can see which is done by namespaces. It is also largely consistent of two parts, controller and the core, where the core organizes processes and the controller responsible for system resources to be distributed to the processes.
@@ -55,13 +57,10 @@ On the other hand when we use immutable infrastructure we get the opposite we ge
 
 #### Configuration Management vs. Orchestration
 
-Configuration Management
+Configuration Management is when you have turned your configuration into code essentially. It allows for introduction of automation into the workflow, where now you could manage more servers in a given time, you will need to be vigilant about keeping your environments consistent between each other, so that place A isn't vastly different from place B. Thus we get a standardization in environment and that enables an easier time for handling the systems by removing variables and documentation is easier to maintain.
 
-todo
+Orchestration consists of many parts, among which are automated configuration,management, coordination of systems and services. At the increasing complexity of managing systems and the fact that we need to manage a large amount of systems means that we need something scalable built into how we want to manage our platform. Orchestration makes you able to manage multiple configurations, automatated tasks among other things across groups of machines. It makes the workflow easier to handle and easier to handle the complexity in modern systems.
 
-Orchestration
-
-todo
 #### Procedural vs Declarative
 
 Procedural, is when we define a step by step process on how to achieve our desired end state.
