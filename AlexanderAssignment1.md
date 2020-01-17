@@ -21,7 +21,9 @@ With SaaS you get a finished product served to you by having a third party hosti
 
 #### OS-level virtualization
 
+OS Virtualization works in the OS layer, and the kernel of the host OS allows for multiple user-space instances to exist in isolation from each other. This is generally referred to as containers and allows us to utilize the host machines kernel, meaning you are locked into running containers based on the same platform as you. You couldn't run a windows container on a Linux host with few exceptions to this rule. It also allows for quite smooth migration of individual applications.
 
+Operating system-level virtualization offers the opportunity to create different and separated execution environments for applications that are managed concurrently. Differently from hardware virtualization, there is no virtual machine manager or hypervisor, and the virtualization is done within a single operating system, where the OS kernel allows for multiple isolated user space instances. The kernel is also responsible for sharing the system resources among instances and for limiting the impact of instances on each other. A user space instance in general contains a proper view of the file system, which is completely isolated, and separate IP addresses, software configurations, and access to devices. Operating systems supporting this type of virtualization are general-purpose, time-shared operating systems with the capability to provide stronger namespace and resource isolation.
 
 #### cgroups
 
