@@ -1,9 +1,1 @@
-FROM mysql:5.7.29
-
-ENV MYSQL_ROOT_PASSWORD 123
-ENV MYSQL_USER Ergho
-ENV MYSQL_PASSWORD 123
-ENV MYSQL_DATABASE northwind
-
-VOLUME /docker-entrypoint-initdb.d
-
+FROM mysql:5.7

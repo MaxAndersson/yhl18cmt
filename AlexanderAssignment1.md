@@ -103,3 +103,9 @@ A deployment is a concept not vastly different from ReplicaSets, in that it does
 A Pod is in essence a group of containers with common resources, e.g., storage, network and a definitionon how to run the containers. It is also the smallest unit that you can manage and create in Kubernetes. A Pod could also be seen as a tightly bound group of applications that in the past would have been executed in the same machine. It is in essence one logical unit where the individual containers in the Pod can communicate using standard inter-process communication and even share one port space and the same IP address. 
 
 Services are essentially a way for defining how to access a set of Pods. Essentially it is a way to allow us to allow an application to not need to keep track of what Pod it should be talking to just that it has a Pod to talk to, this is why we use services to allow for this decoupling, at least this is how you could define it when we are dealing with something stateless. As the application would be fine with talking to any Pod just that it can talk to a Pod.
+
+### Task2
+
+#### Why might you want to make a multi-stage build ?
+
+One reason would be that you don't need the environment you build your application in for deploying your application and thus to minimize the footprint of your application you could then just copy the artifact from the build container. It could also serve to reduce the amount of different Dockerfiles you would need as you basically can have as many stages as you need with the introduction of multi-stage builds.
