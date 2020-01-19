@@ -1,13 +1,13 @@
 - hosts: localhost
   tasks:
-    - name: App-Container
+    - name: demoapp
       docker_container:
-        name: DemoApp
-        image: demoapp
+        name: demoApp
+        image: simonbrgstrm/demoapp:test
         exposed_ports:
           - 8080
 
-    - name: Mysql-Container
+    - name: mysql
       docker_container:
-        name: MysqlDatabas
-        image: mysqlnorth
+        name: database
+        image: simonbrgstrm/north:test
