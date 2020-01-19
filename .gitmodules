@@ -1,0 +1,6 @@
+[submodule "simon/lab1/Demo1WebApp"]
+	path = simon/lab1/demoapp/task2/subtask1/Demo1WebApp
+	url = https://github.com/yhl17cmt/Demo1WebApp.git
+[submodule "simon/lab1/business-data"]
+	path = simon/lab1/task2/subtask2/business-data
+	url = https://github.com/yhl17cmt/business-data.git
