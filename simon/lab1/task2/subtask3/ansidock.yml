@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+    - name: App-Container
+      docker_container:
+        name: DemoApp
+        image: demoapp
+        exposed_ports:
+          - 8080
+
+    - name: Mysql-Container
+      docker_container:
+        name: MysqlDatabas
+        image: mysqlnorth
