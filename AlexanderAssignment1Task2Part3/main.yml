@@ -17,7 +17,7 @@
     - name: "Build tomcat container"
       docker_image:
         build:
-          path: ./AlexanderAssignment1Task2
+          path: ../AlexanderAssignment1Task2
         name: ergho/tomcat
         tag: v1
         source: build
