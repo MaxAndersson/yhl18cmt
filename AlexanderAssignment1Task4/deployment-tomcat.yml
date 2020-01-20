@@ -33,6 +33,6 @@ spec:
     spec:
       containers:
         - name: tomcat-test
-          image: ergho/tomcat
+          image: ergho/tomcat:v1
           ports:
             - containerPort: 8080

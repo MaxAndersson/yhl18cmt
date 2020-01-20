@@ -26,7 +26,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.7
+      - image: ergho/mysql:v1
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -37,11 +37,4 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
-        volumeMounts:
-        - name: mysql-storage
-          mountPath: /docker-entrypoint-initdb.d
-      volumes:
-      - name: mysql-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
 #kubectl create secret generic mysql-pass --from-literal=password=YOUR_PASSWORD

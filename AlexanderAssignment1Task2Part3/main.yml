@@ -7,7 +7,6 @@
     tomcat_name: tomcat_server
     tomcat_host_port: "8080"
     tomcat_container_port: "80"
-    db_mount: "{{lookup('pipe', 'pwd')}}"
     MYSQL_ROOT_PASSWORD: hej 
     MYSQL_DATABASE: northwind
     MYSQL_USER: northwind
@@ -22,6 +21,14 @@
         tag: v1
         source: build
 
+    - name: "Build mysql container"
+      docker_image:
+        build:
+          path: ../AlexanderAssignment1Task2Part2
+        name: ergho/mysql
+        tag: v1
+        source: build
+
     - name: "Create a network"
       docker_network:
         name: "{{ docker_network }}"
@@ -29,11 +36,7 @@
     - name: "Launch database container"
       docker_container:
         name: "{{ db_name }}"
-        image: mysql:5.7
-        mounts:
-          - source: "{{ db_mount }}/AlexanderAssignment1Task2Part2/business-data/Northwind_Database.sql"
-            target: "/docker-entrypoint-initdb.d/dump.sql"
-            type: bind
+        image: ergho/mysql:v1
         restart_policy: always
         network_mode: "{{ docker_network }}"
         env:
