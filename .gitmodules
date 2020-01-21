@@ -1,6 +1,6 @@
 [submodule "AlexanderAssignment1Task2/Demo1WebApp"]
-	path = AlexanderAssignment1Task2/Demo1WebApp
+	path = Alexander/Assignment1/Task2Part1/Demo1WebApp
 	url = https://github.com/yhl17cmt/Demo1WebApp.git
 [submodule "AlexanderAssignment1Task2Part2/business-data"]
-	path = AlexanderAssignment1Task2Part2/business-data
+	path = Alexander/Assignment1/Task2Part2/business-data
 	url = https://github.com/yhl17cmt/business-data.git
