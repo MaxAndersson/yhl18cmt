@@ -1,2 +1,2 @@
 [vm]
-mediabox ansible_user=maxand
+192.168.133.106 ansible_user=maxand
