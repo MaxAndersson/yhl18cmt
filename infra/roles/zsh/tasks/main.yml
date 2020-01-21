@@ -12,8 +12,8 @@
 - name: debug
   debug:
     msg: "{{fonts}}"
-    tags:
-      - fonts
+  tags:
+    - fonts
 - name: update font cache
   command: fc-cache -vf
   when: fonts.changed == true
