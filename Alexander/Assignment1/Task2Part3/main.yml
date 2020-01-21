@@ -6,29 +6,14 @@
     db_name: db_server
     tomcat_name: tomcat_server
     tomcat_host_port: "8080"
-    tomcat_container_port: "80"
+    tomcat_container_port: "8080"
     MYSQL_ROOT_PASSWORD: hej 
     MYSQL_DATABASE: northwind
     MYSQL_USER: northwind
     MYSQL_PASSWORD: hej
+    
 
   tasks:
-    - name: "Build tomcat container"
-      docker_image:
-        build:
-          path: ../AlexanderAssignment1Task2
-        name: ergho/tomcat
-        tag: v1
-        source: build
-
-    - name: "Build mysql container"
-      docker_image:
-        build:
-          path: ../AlexanderAssignment1Task2Part2
-        name: ergho/mysql
-        tag: v1
-        source: build
-
     - name: "Create a network"
       docker_network:
         name: "{{ docker_network }}"
@@ -48,7 +33,7 @@
     - name: "Launch tomcat container"
       docker_container:
         name: "{{ tomcat_name }}"
-        image: ergho/tomcat:v1
+        image: ergho/webapp:v1
         ports:
           - "{{ tomcat_host_port }}:{{ tomcat_container_port }}"
         restart_policy: always
