@@ -3,26 +3,51 @@ Assignment 2
 ## Alexander Stenmark
 ### Task 1
 #### Continuous Integration vs. Continuous Delivery
+Continuous integration, means that we have our source code versioned controlled through e.g., git, and that we do automatic integration tests, and unit tests. For it to work ideally we need to often commit to our git repository. Thus we are able to quickly and easily able to find errors.
+
+Continuous Delivery, means that we take it a step further and we have review of the code and staging into an actual release, but not actually deployed to production, as with Continuous delivery we have a manual step before we push it into production.
+
 #### Jenkins vs. Gitlab
+Jenkins, is very heavily plugin based with the pros and cons involved with that. It is free to use. It can be split away from your code repository.
+
+Gitlab, is an environment you can run on premises or as SaaS from Gitlab, at a cost for the more advanced features or more runner time. There's also the fact that gitlab is a full environment from version control to deployment.
+
 #### SDN (Software Defined Networks)
+
 #### OpenFlow
+
 #### Control Plane vs. Data Plane
+
 #### Microservices
 ##### *Api Gateway*
+
 ##### *What a Service is.*
+
 ##### *Advantages of Microservices*
+
 ##### *Limitations/Pitfalls of Microservices*
+
 ##### *Service Discovery*
+
 #### Inter-Service Communication
+
 ##### *REST*
+
 ##### *RPI / RPC*
+
 ##### *gRPC*
+
 ##### *Message Queues (alt. Service Bus)*
+
 ##### *AMQP*
+
 ##### *RabbitMQ & Kafka*
+
 #### Storage
 ##### *Openstack Cinder vs. GlusterFs*
+
 ##### *Openstack Swift vs. S3 Storage*
+
 ##### *Block storage vs. File Storage vs. Object Storage*
 Block storage is that we only provide storage in the form of blocks, no filesystem or anything, just a place for storing bytes in general.
 
