@@ -13,9 +13,9 @@ Jenkins, is very heavily plugin based with the pros and cons involved with that.
 Gitlab, is an environment you can run on premises or as SaaS from Gitlab, at a cost for the more advanced features or more runner time. There's also the fact that gitlab is a full environment from version control to deployment.
 
 #### SDN (Software Defined Networks)
-
+In SDNs we have three layers in the network, we  have an application layer, control layer and an infrastructure layer connected together through northbound and southbound APIs. Where applications talks to the control layer through the northbound API, and the control layer and infrastructure layer talk through the southbound API.
 #### OpenFlow
-
+A protocol for servers to switches and or routers what to do with packages. In a traditionally setup network you have propietary software in each unit telling it how to operate, with OpenFlow we can centralize the control over the network and be conrolled independant of what gear we have available as long as they support the OpenFlow protocol.
 #### Control Plane vs. Data Plane
 
 #### Microservices
@@ -30,7 +30,6 @@ Gitlab, is an environment you can run on premises or as SaaS from Gitlab, at a c
 ##### *Service Discovery*
 
 #### Inter-Service Communication
-
 ##### *REST*
 
 ##### *RPI / RPC*
