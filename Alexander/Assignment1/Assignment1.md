@@ -109,3 +109,6 @@ Services are essentially a way for defining how to access a set of Pods. Essenti
 #### Why might you want to make a multi-stage build ?
 
 One reason would be that you don't need the environment you build your application in for deploying your application and thus to minimize the footprint of your application you could then just copy the artifact from the build container. It could also serve to reduce the amount of different Dockerfiles you would need as you basically can have as many stages as you need with the introduction of multi-stage builds.
+
+#### Mounting database dumps like this can be a good solution to use for a test database, but why might you not want to do it like this for a production database?
+One reason would be that every container you will be starting would be taking a fair amount of time to finish initializing. Depending on the size of your database it could be fast or it could take 15 minutes or even longer and thus we have achieved a state which is anything but ideal.
