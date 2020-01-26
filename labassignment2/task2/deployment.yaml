@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skolsida
+  labels:
+    uri: example.com
+spec:
+  selector:
+    matchLabels:
+      uri: example.com
+  template:
+    metadata:
+      labels:
+        uri: example.com
+    spec:
+      containers:
+        - name: skolsida
+          image: heroku/nodejs-hello-world
+          ports:
+            - containerPort: 3000
