@@ -1,0 +1,8 @@
+FROM mariadb:10.4.11-bionic
+
+#Create Nortwhind testdatabase Assignment01:Task2:Subtask2 
+ENV SQL_FILE=business-data/Northwind_Database.sql
+ENV MYSQL_ALLOW_EMPTY_PASSWORD=true
+
+COPY $SQL_FILE docker-entrypoint-initdb.d/
+

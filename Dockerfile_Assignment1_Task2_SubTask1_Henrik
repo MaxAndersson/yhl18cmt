@@ -1,0 +1,22 @@
+#Create Multistage Dockerfile with Maven & Tomcat Assignment01:Task2:Subtask1 
+#Maven build image
+FROM maven:3.6.3-jdk-11-openj9 as builder
+
+ENV builddir=Demo1WebApp/
+
+COPY Demo1WebApp/ $builddir
+WORKDIR $builddir
+
+RUN mvn clean package
+
+#Tomcat production image
+FROM tomcat:9.0.30-jdk11-openjdk as production
+
+ENV warlocation=Demo1WebApp/target/Demo1WebApp.war
+
+COPY --from=builder $warlocation $CATALINA_HOME/webapps/ROOT.war
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
+

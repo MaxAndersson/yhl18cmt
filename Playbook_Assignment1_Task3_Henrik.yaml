@@ -1,0 +1,18 @@
+#Setup up Microk8s w kubernetes, did on remote machine
+- name: Install Microk8s
+  hosts: targets
+  remote_user: random
+  become: true
+
+
+  tasks:
+  - name: install microk8s
+    snap:
+      name: microk8s
+      classic: yes
+
+  - name: start microk8s
+    command: microk8s.start
+
+  - name: enable microk8s
+    command: microk8s.enable dns dashboard registry
