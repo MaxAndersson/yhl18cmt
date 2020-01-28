@@ -64,20 +64,32 @@ It consists of two parts, data serialization and the gRPC protocol. It is based 
 
 ##### *Message Queues (alt. Service Bus)*
 
+They are involved in decoupling systems by making the process of decoupling them a lot easier for the communcation between these applications, while maintaining or improving performance, and scalability. They also allow for asynchronous communication. It works through a publisher and subscriber model.
+
 ##### *AMQP*
 
 It's a standard for asyncronous messaging. It allows for different types of confirmation messages, among those are the following : At-most-once, sending a message once, wether it reaches it's destination or not. At-least-once, where we make sure it's delivered but we can get duplicated messages.
 
 ##### *RabbitMQ & Kafka*
 
-RabbitMQ
+RabbitMQ operates under a push based approach for messages. It can be used for communication between microservices. It supports multiple different protocols where AMQP is one of them. It is keeping track of wether messages have been read unlike. It supports durable and transient messages, where the durable ones are stored while the transient ones will disappear if something happens to a node. It is capable of synchrnous and asynchronous communication.
 
-Kafka
+Kafka, is a distributed public/subscribe messaging system. It works in the way that it keeps the messages for a set period of time, and it doesn't itself keep track of wether a message has been read, but rather making the consumer responsible for that. It operates under a pull based approach for messages.
 
 #### Storage
 ##### *Openstack Cinder vs. GlusterFs*
 
+Cinder is the block store for in Openstack, that can use several different backends including but not limited to, Ceph, GlusterFS. Through these backends the volumes for the block store are provided. Ceph as far as i'm aware is the most commonly used one in the Openstack sphere.
+
+GlusterFS, is a distributed file system which could be the foundation you place your cinder block storage on. It works through storage pools and bricks. So it can be used with Cinder to integrate for Openstack or it can be used standalone to provide the benefits of a distributed file system.
+
 ##### *Openstack Swift vs. S3 Storage*
+
+Openstack Swift is open and available for being deployed with Openstack along with plenty of other services.
+
+S3, is Amazons proprietary object storage, thats available to use from their platform.
+
+Overall they are relatively similar in my experince in that they both are object/blob storage services, but the platforms they are on take a bit of a different approach, with Opentack being open, and AWS being propietary.
 
 ##### *Block storage vs. File Storage vs. Object Storage*
 
