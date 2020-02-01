@@ -46,17 +46,47 @@ We can follow the path a request would take, what services it talks to and so on
 ### Service Mesh
 #### What is a Service Mesh?
 
-#### How does enable it’s data plane?
+It is an infrastructure for communication service to service.
+
+#### How does it enable it’s data plane?
+
+It uses a sidecar to the application instance, wether its a pod or container. It takes over all ingress and egress traffic from the application and allows you to manage that without having to bother with application code for it.
 
 #### mTLS
 
+Ensures that traffic is authenticated by exchange of certificates by client and server. It means that both server and client can verify the recipient of the traffic. 
+
 #### Circuit Breaking
+
+It is to design where failure is an option, we build in a 'circuit breaker'. To allow us after reaching a threshold of failed requests to 'open' the breaker meaning we have now stopped all requests without executing them at all and we send an error message out. Then we can after a timeout period, we go over to trying to allow for the service to be used once again, and if it works we go back to full functionality again. Thus we can limit the impact of cascading failures by having a backlog of requests or having long load times that just ends in an error anyway.
 
 #### Traffic splitting/steering
 
+Rules for how traffic is directed on the network by the service mesh. 
+
 #### Fault Injection
+
+To allow testing the resilience of our application by introducing various types of faults, could be HTTP delay etc. There's various types of faults you could test, and it can be isolated to not impact the end users of the service.
 
 #### Rolling Update
 
+It allows us by to do updates with no lost requests, by using a virtual service, and rerouting the traffic from v1 and v2 with actual 0 downtime. So we create separate deployments for the versions and then once successfully rolled out we reroute the traffic to v2 and while we do that we leave v1 still up and functional for a period of time. Then once it's all done we can bring down v1 and there we go, we have v2 up and running without losing requests.
+
 ### Serverless
 #### What are some benefits and drawbacks of adopting serverless architecture?
+
+Benefits:
+
+No server management, you leave the management of the actual servers to your vendor, as even serverless takes place on actual servers. 
+
+Reduced cost, you only pay for exactly what you use, down into hundreds of milliseconds depending on your provider.
+
+Scalability, it's inherently scalable  as it increases the instances to meet the demands within your limits of course. It has the capability of handling the lows and highs through that scalability.
+
+Drawbacks:
+
+Security concerns, you leave the security to someone else to manage and thus reliant on them to do their job properly. You are going to be sharing servers with other tenants, meaning you could be impacted by something caused by others.
+
+Vendor lock-in, you could be locked in with your current code by having reliance on specific ways something functions with your current vendor, especially as the vendors do offering services that are somewhat different in workflow and features.
+
+It is best used with short duration tasks, as you get charged for the time code is running and there can be a cap on the duration of your tasks. Meaning it could be more efficient and better to run your task in a more traditional way.
