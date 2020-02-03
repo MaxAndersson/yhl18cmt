@@ -5,13 +5,15 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: localhost:32000/demo
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
+env:
+  - name: REACT_APP_KEYCLOAK_URL
+    value: "FindThisValue"
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
