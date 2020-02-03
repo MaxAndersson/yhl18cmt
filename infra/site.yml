@@ -1,7 +1,7 @@
 ---
 
 - hosts: vm
-  roles: fir
+  roles: 
     - unbloat
     - i3wm
     - chrome

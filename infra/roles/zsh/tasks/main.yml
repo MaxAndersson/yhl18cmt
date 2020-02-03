@@ -21,6 +21,9 @@
     - fonts
     - zsh
 
+- name: ensure git
+  apt:
+      name: git
 # - name: Template a file to /tmp/ohmyzsh.install
 #   template:
 #     src: templates/install.sh
