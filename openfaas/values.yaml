@@ -97,7 +97,7 @@ gateway:
   replicas: 1
   scaleFromZero: true
   # change the port when creating multiple releases in the same baremetal cluster
-  nodePort: 31112
+  nodePort: 3000
   maxIdleConns: 1024
   maxIdleConnsPerHost: 1024
   directFunctions: true
