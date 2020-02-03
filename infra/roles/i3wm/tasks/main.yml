@@ -1,0 +1,29 @@
+---
+# Install i3-wm
+
+- name: Ensure i3 is installed
+  apt:
+    name: i3-wm
+    state: present
+    update_cache: true
+
+# - name: Ensure autostart files
+#   copy: src={{item}} dest=/home/{{ansible_user}}/.config/autostart/ owner={{ansible_user}} group={{ansible_user}} mode='u=rw'
+#   with_fileglob:
+#     - autostart/*
+
+- name: Ensure i3 config directory
+  file: path=/home/{{ansible_user}}/.i3 state=directory
+
+- name: Ensure i3 config
+  copy: src={{item}} dest=/home/{{ansible_user}}/.i3/ owner={{ansible_user}} group={{ansible_user}} mode='u=rw'
+  with_fileglob:
+   - i3/*
+
+- name: Set permissions for i3 config directory
+  file: path=/home/{{ansible_user}}/.i3 recurse='yes' owner={{ansible_user}} group={{ansible_user}} mode='u=rwX'
+
+- name: Ensure xSession
+  copy: src=Xsession/.Xsession dest=/home/{{ansible_user}}/.Xsession owner={{ansible_user}} group={{ansible_user}} mode='u=rw'
+- name: Install Extras
+  import_tasks: install_extras.yml

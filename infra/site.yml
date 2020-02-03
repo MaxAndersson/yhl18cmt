@@ -1,0 +1,14 @@
+---
+
+- hosts: vm
+  roles: 
+    - unbloat
+    - i3wm
+    - chrome
+    - zsh
+    - microk8s
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Ping this computer
+      ping:

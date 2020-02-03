@@ -1,0 +1,21 @@
+---
+- name: Block Microk8s
+  block:
+    - name: Installing microk8s (kubernetes)
+      snap:
+        name: microk8s
+        classic: yes
+        channel: latest/stable
+        state: present
+    - name: Add User to group
+      user:
+        name: "{{ansible_user}}"
+        groups:
+          - microk8s
+        append: yes
+    - name: Waiting until microk8s is ready
+      command: microk8s.status --wait-ready
+    - name: Enable addons
+      command: microk8s.enable dashboard dns registry ingress rbac storage
+  tags:
+    - microk8s

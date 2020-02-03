@@ -1,0 +1,9 @@
+---
+- name: Install i3wm addons
+  apt:
+    pkg:
+      - feh
+      - i3lock-fancy
+      - i3status
+      - dmenu
+      
