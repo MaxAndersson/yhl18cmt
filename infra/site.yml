@@ -2,7 +2,6 @@
 
 - hosts: vm
   roles: 
-    - docker
     - unbloat
     - i3wm
     - chrome
