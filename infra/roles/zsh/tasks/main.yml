@@ -1,0 +1,72 @@
+--- 
+- name: install zsh
+  apt: 
+    name: zsh
+- name: install powerline fonts
+  apt: 
+    name: fonts-powerline
+  tags:
+   - zsh
+   - fonts
+  register: fonts
+- name: debug
+  debug:
+    msg: "{{fonts}}"
+  tags:
+    - fonts
+- name: update font cache
+  command: fc-cache -vf
+  when: fonts.changed == true
+  tags:
+    - fonts
+    - zsh
+
+- name: ensure git
+  apt:
+      name: git
+# - name: Template a file to /tmp/ohmyzsh.install
+#   template:
+#     src: templates/install.sh
+#     dest: /tmp/ohmyzsh.install
+#     owner: "{{ansible_user}}"
+#     mode: '0755'
+- name: install oh-my-zsh
+  script: scripts/install.sh
+  become_user: "{{ansible_user}}"
+  tags:
+    - zsh
+
+- name: copy zshrc
+  copy: src=config/.zshrc dest=/home/{{ansible_user}}/.zshrc owner={{ansible_user}} group={{ansible_user}} mode='u=rw'
+  tags:
+   - zsh
+
+- name: copy Xresources
+  copy: src=config/google.dark dest=/home/{{ansible_user}}/.Xresources owner={{ansible_user}} group={{ansible_user}} mode='u=rw'
+  tags:
+   - zsh
+   - xresources
+
+- name: install gnome-terminal colors
+  script: scripts/hybrid.sh
+  become_user: "{{ansible_user}}"
+  tags:
+    - zsh
+    - xresources
+    - gset
+  #TODO gotop, polybar, neofetch, (compton compositor?) rxvt-unicode
+  # xinit xbacklight xinput feh scrot conky-all rxvt-unicode-256color alsa-utils acpi fonts-font-awesome redshift xdotool screen wicd   ranger weechat emacs
+
+# sudo apt-get install cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev libxcb-xkb-dev pkg-config python-xcbgen xcb-proto libxcb-xrm-dev i3-wm libasound2-dev libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev libxcb-composite0-dev xcb libxcb-ewmh2
+# git clone https://github.com/polybar/polybar.git
+# cd polybar && ./build.sh
+
+
+# Wallpaper: Something I found on r/WidescreenWallpaper I believe 3440x1440
+# VM: i3-gaps
+# Bar: Polybar
+# Info: neofetch
+# Terminal: Konsole & urxvt, mostly konsole
+# Shell: zsh
+# Other: gtop, vim, rofi, i3-lock-extra (modified), wal (automatic color picker from wallpapers), spotify, that cowsay+showerthought script, probably something else that I'm forgetting.
+  
