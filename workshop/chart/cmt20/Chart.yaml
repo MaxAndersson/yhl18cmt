@@ -1,3 +1,4 @@
+
 apiVersion: v2
 name: cmt20
 description: A Helm chart for Kubernetes
@@ -25,3 +26,11 @@ dependencies:
     repository: https://charts.bitnami.com
     condition: rabbitmq.enabled
     version: "6.17.0"
+<<<<<<< HEAD
+  - name: openfaas
+    version: "5.4.1"
+    repository: openfaas/openfaas
+    tags: backend
+    enabled: true
+=======
+>>>>>>> 2b12c5b16bb376f5655f111ba44cd6b649a9335a
