@@ -1,0 +1,30 @@
+language: node_js
+node_js: 
+- 8.10.0
+cache: npm
+
+env:
+  - PAGE_URL="https://jabooi.github.io/testapp/"
+
+install:
+  - npm install
+ 
+script:
+  - npm run build
+
+after_success:
+  - npm test
+
+before_deploy:
+  - chmod +x check-success.sh
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master
+
+after_deploy:
+  - ./check-success.sh
