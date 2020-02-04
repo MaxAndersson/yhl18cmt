@@ -10,7 +10,7 @@ function App() {
       <header className="App-header">
         
         <p>
-          Welcome  to cmt20 workshop: <p>API_URL: {window._env_.REACT_APP_KEYCLOAK_URL}</p>
+          Welcome  to cmt20 workshop
         </p>
         <ul>
           <li>NODE_ENV : {process.env.NODE_ENV}</li>
