@@ -25,3 +25,6 @@ dependencies:
     repository: https://charts.bitnami.com
     condition: rabbitmq.enabled
     version: "6.17.0"
+  - name: keycloak
+    repository: https://codecentric.github.io/helm-charts
+    version: "6.2.0"
