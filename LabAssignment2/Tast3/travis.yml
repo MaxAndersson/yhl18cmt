@@ -1,15 +1,26 @@
 language: node_js
 node_js:
-  - 11.6.0
+- 8.10.0
 cache: npm
 
-install: 
+env:
+  - PAGE_URL="https://DansandeHippie.github.io/testapp"
+install:
   - npm install
+script:
   - npm run build
+after_success:
+  - npm test
+before_deploy:
+  - chmod +x check-success.sh
 
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
+  local_dir: build
   on:
     branch: master
+
+after_deploy:
+  - ./check.success.sh   
