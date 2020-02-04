@@ -1,3 +1,4 @@
+
 apiVersion: v2
 name: cmt20
 description: A Helm chart for Kubernetes
@@ -28,3 +29,9 @@ dependencies:
   - name: keycloak
     repository: https://codecentric.github.io/helm-charts
     version: "6.2.0"
+  - name: openfaas
+    version: "5.4.1"
+    repository: openfaas/openfaas
+    tags: backend
+    enabled: true
+
