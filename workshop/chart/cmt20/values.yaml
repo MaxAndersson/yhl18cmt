@@ -6,6 +6,8 @@ rabbitmq:
     username: user
     password: password
 
+keycloak:
+    password: password
 
 replicaCount: 1
 
