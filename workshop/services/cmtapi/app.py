@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import url_for
-from celery.states import state
 import tasks
 import os
+import json 
 
 app = Flask(__name__)
 
@@ -15,13 +15,13 @@ def ready():
 
 @app.route('/add/<int:x>/<int:y>')
 def add(x, y):
-    task = celery.send_task('tasks.add', args=[x, y])
-    response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'> Status of: {task.id} </a>"
-    return response
+   #task = celery.send_task('tasks.add', args=[x, y])
+    task = tasks.add.delay(x,y)
+    return json.dumps(dict(id=url_for('check_task', task_id=task.id, external=True)))
 
 @app.route('/check/<string:task_id>')
 def check_task(task_id):
-    respond = celery.AsyncResult(task_id)
+    respond = tasks.celery.AsyncResult(task_id)
     if respond.state == states.PENDING:
         return respond.state
     else:

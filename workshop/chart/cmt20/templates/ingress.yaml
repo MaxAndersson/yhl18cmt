@@ -36,7 +36,7 @@ spec:
           - path: "/api"
             backend:
               serviceName: cmtapi
-              servicePort: 5000
+              servicePort: 8080
           # - path: "/rabbitmq"
           #   backend:
           #     serviceName: cmt20-rabbitmq

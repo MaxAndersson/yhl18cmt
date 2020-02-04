@@ -28,7 +28,7 @@ spec:
           - name: CELERY_BROKER_URL
             value: "amqp://user:password@cmt20-rabbitmq:5672"
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
           protocol: TCP
         resources: {}
       restartPolicy: Always

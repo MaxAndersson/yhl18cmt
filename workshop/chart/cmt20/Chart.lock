@@ -5,5 +5,8 @@ dependencies:
 - name: keycloak
   repository: https://codecentric.github.io/helm-charts
   version: 6.2.0
-digest: sha256:a48851c8403ce88fe1763198b6d34b0d0c3ddbabf9249886fe4d39b5668ab0c4
-generated: "2020-02-04T09:17:10.295197818Z"
+- name: openfaas
+  repository: https://openfaas.github.io/faas-netes
+  version: 5.4.1
+digest: sha256:b744fb6e9c050d677f29bc6571e08dba2a012d6c144bcfe542097e0f00fb0756
+generated: "2020-02-04T11:53:31.053257496+01:00"

@@ -31,7 +31,5 @@ dependencies:
     version: "6.2.0"
   - name: openfaas
     version: "5.4.1"
-    repository: openfaas/openfaas
-    tags: backend
+    repository: https://openfaas.github.io/faas-netes
     enabled: true
-

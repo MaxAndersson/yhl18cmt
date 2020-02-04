@@ -9,6 +9,10 @@ rabbitmq:
 keycloak:
     password: password
 
+openfaas:
+  namespace: openfaas
+  functionNamespace: openfaas-fn
+
 replicaCount: 1
 
 image:
