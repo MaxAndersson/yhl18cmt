@@ -1,3 +1,4 @@
+
 apiVersion: v2
 name: cmt20
 description: A Helm chart for Kubernetes
@@ -18,4 +19,19 @@ version: 0.1.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application.
-appVersion: 1.16.0
+appVersion: latest
+
+dependencies:
+  - name: rabbitmq
+    repository: https://charts.bitnami.com
+    condition: rabbitmq.enabled
+    version: "6.17.0"
+  - name: keycloak
+    repository: https://codecentric.github.io/helm-charts
+    version: "6.2.0"
+  - name: openfaas
+    version: "5.4.1"
+    repository: openfaas/openfaas
+    tags: backend
+    enabled: true
+

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: cmtworker
+  name: cmtworker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: cmtworker
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: cmtworker
+    spec:
+      containers:
+      - command:
+        - celery
+        - worker
+        - -A
+        - tasks
+        image: localhost:32000/cmtapi
+        imagePullPolicy: Always
+        name: cmtworker
+        env: 
+          - name: CELERY_BROKER_URL
+            value: "amqp://user:password@cmt20-rabbitmq:5672"
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources: {}
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

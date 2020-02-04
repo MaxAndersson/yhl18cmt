@@ -27,15 +27,18 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
-      http:
+    - http:
         paths:
-        {{- range .paths }}
-          - path: {{ . }}
+          - path: '/'
             backend:
               serviceName: {{ $fullName }}
               servicePort: {{ $svcPort }}
-        {{- end }}
-  {{- end }}
+          - path: "/api"
+            backend:
+              serviceName: cmtapi
+              servicePort: 5000
+          # - path: "/rabbitmq"
+          #   backend:
+          #     serviceName: cmt20-rabbitmq
+          #     servicePort: 15672
 {{- end }}

@@ -10,6 +10,15 @@ RUN npm run build
 
 # production environment
 FROM nginx:1.16.0-alpine
+RUN apk add --no-cache bash
+RUN rm -rf /etc/nginx/conf.d
+COPY conf /etc/nginx
+
 COPY --from=build /app/build /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+COPY ./env.sh .
+COPY .env .
+RUN chmod +x env.sh
+
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
