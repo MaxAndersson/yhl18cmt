@@ -15,9 +15,11 @@ def ready():
 
 @app.route('/add/<int:x>/<int:y>')
 def add(x, y):
-    task = celery.send_task('tasks.add', args=[x, y])
-    response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'> Status of: {task.id} </a>"
-    return response
+    #task = celery.send_task('tasks.add', args=[x, y])
+    #response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'> Status of: {task.id} </a>"
+    #eturn response
+    tasks = tasks.add.delay(x, y)
+    return str(task.get())
 
 @app.route('/check/<string:task_id>')
 def check_task(task_id):
