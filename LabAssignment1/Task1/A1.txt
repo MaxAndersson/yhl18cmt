@@ -1,0 +1,33 @@
+Task 1
+IaaS, PaaS, SaaS - Infrastructure as a service, Platform as a service, Software as a service.
+
+OS-level virtualization - änvisar till ett operativsystem där kärnan tillåter förekomsten av flera isolerade användarutrymmeinstanser.
+
+cgroups-är är en Linux-kärnfunktion som begränsar, redogör för och isolerar resursanvändningen i en samling processer.
+
+Copy-on-Write & snapshot - data modiferas inte, utan förändringar sparas istället. snapshots punkter i ett copy on write system dit man kan gå tillbaka.
+
+High-Availability - en miljö går inte ner bara för att en maskin är sönder? Hänvisar till system som är hållbara och sannolikt kommer att fungera kontinuerligt utan fel under lång tid. Uttrycket innebär att delar av ett system har testats helt och i många fall att det finns platser för fel i form av redundanta komponenter.
+
+Idempotency - är så att du kan försöka igen en begäran flera gånger medan du bara utför en åtgärd en gång.
+
+Mutable vs Immutable Infrastructure - Mutable kan förändras och kan utsättas för mutation.
+Immutable Kan inte förändras.
+
+Configuration Management vs. Orchestration - Configuration Management är att installera paket och Orchestration kan partionera diskar. 
+
+Procedural vs Declarative - Procedural vi berättar för datorn hur man löser problemet. Declarative vi berättar för datorn vilket problem vi vill lösa.
+
+Git Submodule - låter dig behålla ett Git-arkiv som en underkatalog för ett annat Git-arkiv. På så sätt kan du klona ett annat arkiv i ditt projekt och hålla "commits" åtskilda.
+
+Ansible
+
+Inventory File - definierar hosts och grupper av hosts på vilka kommandon, moduler och uppgifter i en spellista fungerar. Filen kan vara i ett av många format beroende på din Ansible-miljö och plugins.  
+
+Playbook - är en organiserad skriptenhet som definierar arbete för en serverkonfiguration som hanteras av automatiseringsverktyget Ansible.
+
+Kubernetes
+
+Compare Stateful and Stateless Applications - Stateful sparar data på ihållande hårddisklagring för användning av servern, klienter och andra applikationer. Stateless har ingen bestående lagring eller volym associerad med den.  
+
+ReplicaSets,Deployments, Pods & Services - Replicasets säkerställer att ett specificerat antal pod replicas körs vid en viss tidpunkt. Depoloyments kör flera kopior av din applikation och ersätter automatiskt alla instanser som misslyckas eller som inte svarar. Pods är en grupp containrar som distribueras tillsammans på samma host. Services är en tjänst som en grupp av pods som körs på klustret. 

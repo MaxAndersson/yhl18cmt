@@ -1,0 +1,14 @@
+- hosts: all
+  vars:
+    create_containers: 4
+    default_container_name: docker
+    default_container_image: ubuntu
+  tasks:
+  - name: Create a data container
+    docker_container:
+      name: northwind
+      image: northwind_sql:latest
+  - name: Create a data container
+    docker_container:
+      name: demowebapp
+      image: d9867eb/demowebapp:latest
