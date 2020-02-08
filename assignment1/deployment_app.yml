@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoweb-deployment
+  labels:
+    app: demoweb
+spec:
+  selector:
+    matchLabels:
+      app: demoweb
+  template:
+    metadata:
+      labels:
+        app: demoweb
+    spec:
+      containers:
+      - name: demoweb
+        image: cory9x/demoweb
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: businessdata-deployment
+  labels:
+    app: businessdata
+spec:
+  selector:
+    matchLabels:
+      app: businessdata
+  template:
+    metadata:
+      labels:
+        app: businessdata
+    spec:
+      containers:
+      - name: businessdata
+        image: cory9x/businessdata
+        ports:
+        - containerPort: 3306
+

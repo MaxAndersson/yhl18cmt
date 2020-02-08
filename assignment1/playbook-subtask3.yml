@@ -1,0 +1,29 @@
+- name: Pull centos image
+  hosts: localhost      
+  tasks:
+          - name: pull image
+            docker_image:
+              name: maven:3.6.3-ibmjava-8-alpine
+              name: tomcat
+              name: mariadb
+          - name: Build image
+            docker_image:
+              path: ~/Demo1WebApp
+              name: demoweb:2.0
+          - name: Build image
+            docker_image:
+              path: ~/business-data
+              name: businessdata
+          - name: create container
+            docker_container:
+              name: subtask2
+              image: demoweb:2.0
+              state: started
+              ports:
+              - "8080:8080"
+          - name: create container
+            docker_container:
+              name: subtask3
+              image: businessdata
+              state: started
+

@@ -1,0 +1,11 @@
+FROM mariadb 
+
+ENV MYSQL_ALLOW_EMPTY_PASSWORD=true
+
+COPY Northwind_Database.sql /docker-entrypoint-initdb.d/dump.sql
+
+#PORT
+EXPOSE 3306
+
+
+

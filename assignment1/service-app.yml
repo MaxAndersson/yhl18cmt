@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demoweb-deployment
+spec:
+  selector:
+    app: demoweb
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: businessdata-deployment
+spec:
+  selector:
+    app: businessdata
+  ports:
+  - protocol: TCP
+    port: 3306
+  type: NodePort
