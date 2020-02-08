@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+    - name: demoapp
+      docker_container:
+        name: demoApp
+        image: simonbrgstrm/demoapp:test
+        exposed_ports:
+          - 8080
+
+    - name: mysql
+      docker_container:
+        name: database
+        image: simonbrgstrm/north:test
