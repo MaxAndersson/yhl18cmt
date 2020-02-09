@@ -1,2 +1,2 @@
 # yhl18cmt
-Repository for epic devops
+Max repo for amateur going pro devops

@@ -1,0 +1,15 @@
+---
+- hosts: webserver
+  remote_user: rexus
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Running the web container
+      docker_container:
+        image: mywebapp:latest
+        state: running
+
+    - name: Running the DB container
+      docker_container:
+        image: northwmaria:latest
+        state: running

@@ -1,9 +1,0 @@
-language: node_js
-node_js: node
-cache: npm
-before_install:
-  - cd my-app
-script:
-  - npm test
-after_success:
-  - npm run coverage

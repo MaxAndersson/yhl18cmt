@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 11.6.0
+cache: npm
+install:
+  - npm install
+  - npm run build
+test:
+  - npm test -- --watchAll=false
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: gh-pages
