@@ -1,0 +1,79 @@
+- name: install Docker and create containers for ST 1 & 2
+  hosts: targets
+  remote_user: random
+  become: true
+
+  tasks:
+  - name: update apt cache
+    apt: 
+      update_cache: yes
+  
+  - name: install docker, python3 and pip3
+    apt:
+      pkg: ['docker.io', 'python3', 'python3-pip']
+
+  - name: install docker python module
+    pip:
+      name: docker
+      executable: pip3
+
+  - name: start docker service
+    service: name=docker state=started
+  
+  - name: copy Dockerfiles to Docker host
+    copy:
+      src: "{{ item.src }}" 
+      dest: "{{ item.dest }}"
+      mode: "{{ item.mode }}"
+    with_items:
+        - { src: '/cmt/A1subtask1/Dockerfile', dest: '/docker/st1/', mode: '0777' }
+        - { src: '/cmt/A1subtask2/Dockerfile', dest: '/docker/st2/', mode: '0777' }
+ 
+  - name: clone ST1 git repo
+    git:
+      repo: https://github.com/yhl17cmt/Demo1WebApp
+      dest: /docker/st1/Demo1WebApp/
+  - name: clone ST2 git repo
+    git:
+      repo: https://github.com/yhl17cmt/business-data
+      dest: /docker/st2/business-data/
+
+
+  - name: build Docker image for ST 1
+    docker_image: 
+      name: webapp
+      build:
+        path: /docker/st1/
+        args:
+          listen_port: 8080
+        pull: no
+      source: build
+  
+  - name: build Docker image for ST 2
+    docker_image:
+      name: database
+      build:
+        path: /docker/st2/
+        pull: no
+      source: build    
+  
+  - name: start container ST 1
+    docker_container: 
+      name: webappST1
+      image: webapp
+      state: started
+      ports: 
+      - "8080:8080"
+
+  - name: start container ST 2
+    docker_container:
+      name: databaseST2
+      image: database
+      state: started
+
+
+
+
+
+
+

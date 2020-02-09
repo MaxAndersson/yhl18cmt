@@ -1,0 +1,58 @@
+###Note: Körde silvertejpsvarianten med docker save <image> > <image>.tar & microk8s.ctr image import <image>.tar för att få mina images 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deploy	
+  labels:
+    app: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp		
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: webapp:test
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deploy
+  labels:
+    app: testdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testdb
+  template:
+    metadata:
+      labels:
+        app: testdb
+    spec:
+      containers:
+      - name: testdb
+        image: mydb:test
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  type: NodePort
+  ports:
+  - name: webapp-ports
+    port: 8080
+
+
