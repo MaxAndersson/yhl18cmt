@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    stages {
+         stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+         stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+         stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+         stage('Copy') {
+            steps {
+                sh 'scp -r build/* sudden@192.168.122.82:/home/sudden/myapp/build'
+            }
+        }
+         stage('Build image') {
+            steps {
+                sh 'ssh sudden@192.168.122.82 "docker build /home/sudden/myapp/ -t sudden3d/myapp:test"'
+            }
+        }
+         stage('Push image') {
+            steps {
+                sh 'ssh sudden@192.168.122.82 "docker push sudden3d/myapp:test"'
+            }
+        }
+         stage('K8s deploy') {
+            steps {
+                sh 'ssh sudden@192.168.122.82 "/snap/bin/microk8s.kubectl apply -f /home/sudden/eshop/myapp-deploy.yml"'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'I succeeded!'
+        }
+        unstable {
+            echo 'I am unstable.'
+        }
+        failure {
+            echo 'I failed...'
+        }
+    }
+}

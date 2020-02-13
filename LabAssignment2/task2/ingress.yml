@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.is/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    nginx.ingress.kubernetes.is/rewrite-target: /
+  spec:
+    rules:
+    - host: localhost
+      http:
+	paths:
+	- path: /demoapp
+	  backend:
+	    serviceName: demoapp-test
+	    servicePort: 80
