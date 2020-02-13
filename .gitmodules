@@ -1,0 +1,3 @@
+[submodule "cmt18"]
+	path = cmt18
+	url = https://github.com/mange76/cmt18.git
